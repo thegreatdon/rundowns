@@ -1,0 +1,25 @@
+<div class="well" style="background-color:#036;">
+
+    <div class="form-group">
+        <img src = "../nprlogo.gif">
+        <span *ngFor = "let show of shows" style="color:#fff;font-weight:bold;">
+        <span *ngIf = "show =='ME'"><input type="radio" name="sho" value="{{show | lowercase}}" (click)="clickShow(show)" checked> {{show}} </span>
+        <span *ngIf = "show !='ME'"><input type="radio" name="sho" value="{{show | lowercase}}" (click)="clickShow(show)"> {{show}} </span>
+        </span>
+
+        <span class="input-group" style="width:410px;">
+            <input class="form-control" 
+            a2e-datetimepicker
+            [date]="date"
+            [options]="a2eOptions"
+            (onChange)="dateChange($event)"
+            (onClick)="dateClick()"
+            />
+            <span class="input-group-addon"><span class="glyphicon glyphicon-calendar" style="cursor:pointer;"></span> || <button  (click)="currentDate()" style="font-size:12px;font-weight:bold;">use current date/time</button></span>
+        </span>
+        <!--- <button class="btn btn-default" (click)="currentDate()" style="font-size:12px;font-weight:bold;">use current date/time</button> --->
+    </div>
+</div>
+
+
+    <b>\\ad.npr.org\news\DC-Production\BCS\HTML\{{show}}\{{show}}_{{date | date :'MM-dd-yyyy_Hmm'}}.html</b>
