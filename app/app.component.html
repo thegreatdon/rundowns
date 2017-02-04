@@ -1,13 +1,13 @@
 <div class="well" style="background-color:#036;">
 
     <div class="form-group">
-        <img src = "../nprlogo.gif">
+        <img src = "./nprlogo.gif">
         <span *ngFor = "let show of shows" style="color:#fff;font-weight:bold;">
         <span *ngIf = "show =='ME'"><input type="radio" name="sho" value="{{show | lowercase}}" (click)="clickShow(show)" checked> {{show}} </span>
         <span *ngIf = "show !='ME'"><input type="radio" name="sho" value="{{show | lowercase}}" (click)="clickShow(show)"> {{show}} </span>
         </span>
 
-        <span class="input-group" style="width:410px;">
+        <span class="input-group" style="width:505px;">
             <input class="form-control" 
             a2e-datetimepicker
             [date]="date"
@@ -15,11 +15,15 @@
             (onChange)="dateChange($event)"
             (onClick)="dateClick()"
             />
-            <span class="input-group-addon"><span class="glyphicon glyphicon-calendar" style="cursor:pointer;"></span> || <button  (click)="currentDate()" style="font-size:12px;font-weight:bold;">use current date/time</button></span>
+            <span class="input-group-addon"><span class="glyphicon glyphicon-calendar" style="cursor:pointer;"></span> || <button  (click)="currentDate()" style="font-size:14px;font-weight:bold;">use current date/time</button></span>
         </span>
-        <!--- <button class="btn btn-default" (click)="currentDate()" style="font-size:12px;font-weight:bold;">use current date/time</button> --->
+        <!-- <button class="btn btn-default" (click)="currentDate()" style="font-size:12px;font-weight:bold;">use current date/time</button> -->
     </div>
 </div>
-
-
-    <b>\\ad.npr.org\news\DC-Production\BCS\HTML\{{show}}\{{show}}_{{date | date :'MM-dd-yyyy_Hmm'}}.html</b>
+    <!--<b>\\ad.npr.org\news\DC-Production\BCS\HTML\{{show}}\{{show}}_{{date | date :'MM-dd-yyyy_Hmm'}}.html</b><br/>-->
+<pre>
+Call rundownServer.js
+    http://localhost:3005/?show={{show}}&datetime={{date | date :'MM-dd-yyyy HH:mm'}}
+</pre>
+http://localhost:3005/?show=watc&datetime=1974-10-14%2018:35<br/>
+    <iframe src="http://localhost:3005/?show=newscast&datetime=1974-10-14%2018:35" width="800" height="800"></iframe>
