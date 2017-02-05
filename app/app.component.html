@@ -1,5 +1,4 @@
 <div class="well" style="background-color:#036;">
-
     <div class="form-group">
         <img src = "./nprlogo.gif">
         <span *ngFor = "let show of shows" style="color:#fff;font-weight:bold;">
@@ -17,13 +16,16 @@
             />
             <span class="input-group-addon"><span class="glyphicon glyphicon-calendar" style="cursor:pointer;"></span> || <button  (click)="currentDate()" style="font-size:14px;font-weight:bold;">use current date/time</button></span>
         </span>
-        <!-- <button class="btn btn-default" (click)="currentDate()" style="font-size:12px;font-weight:bold;">use current date/time</button> -->
+                <!-- <button class="btn btn-default" (click)="currentDate()" style="font-size:12px;font-weight:bold;">use current date/time</button> -->
     </div>
 </div>
     <!--<b>\\ad.npr.org\news\DC-Production\BCS\HTML\{{show}}\{{show}}_{{date | date :'MM-dd-yyyy_Hmm'}}.html</b><br/>-->
+    <!-- http://localhost:3005/?show={{show}}&datetime={{date | date :'MM-dd-yyyy&HH:mm'}} -->
 <pre>
 Call rundownServer.js
-    http://localhost:3005/?show={{show}}&datetime={{date | date :'MM-dd-yyyy HH:mm'}}
+{{this.newFlxUrl}}
 </pre>
-http://localhost:3005/?show=watc&datetime=1974-10-14%2018:35<br/>
-    <iframe src="http://localhost:3005/?show=newscast&datetime=1974-10-14%2018:35" width="800" height="800"></iframe>
+ <!--
+     http://localhost:3005/?show=atc&datetime=1508020500000<br/>
+     <iframe src="http://localhost:3005/?show=atc&datetime=1508020500000" width="800" height="800"></iframe>-->
+ <iframe [src] = "newFlxUrl | safe" width="800" height="800"></iframe>
