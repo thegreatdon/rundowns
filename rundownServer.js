@@ -367,9 +367,9 @@ var htmlResponse;
 
 // htmlResponse = "<table border='1'><tr><td valign='top'>"+readHtmlOne+"</td><td valign='top'>"+readHtmlTwo+"</tr></table>";
 
-htmlResponse = newsFlexHtmlOne;
+htmlResponse = newsFlexHtmlOne+"<br/>html:"+readHtmlOne;
     if(newsFlexHtmlTwo){
-        htmlResponse = "<table border='1'><tr><td valign='top'>"+newsFlexHtmlOne+"</td><td valign='top'>"+newsFlexHtmlTwo+"</tr></table>";
+        htmlResponse = "<table border='1'><tr><td valign='top'>"+newsFlexHtmlOne +"<br/>html:"+readHtmlOne+"</td><td valign='top'>"+newsFlexHtmlTwo+"<br/>html:"+readHtmlTwo+"</tr></table>";
     }
 response.send(htmlResponse);
     
