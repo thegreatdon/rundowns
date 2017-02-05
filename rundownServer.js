@@ -4,6 +4,9 @@ var app = express();
 // app.use(express.static('public'));
 var moment = require('moment');
 
+var file = require('file-system');
+var fs = require('fs');
+
 app.get('/', function(request, response){
 //http://localhost:3005/?show=newscast&datetime=2017-10-14%2018:35:00
 
@@ -348,12 +351,28 @@ var newsFlexHtml;
     if(show == 'watc' || show == 'election' || show == 'special' || show == 'newscast'){
         newsFlexHtml = "calendar date: " + submittedDate +"<br/>" + "newsFlexHtmlOne: "+ newsFlexHtmlOne + "<br/>newsFlexHtmlTwo:" + newsFlexHtmlTwo;
     }
-// "datTim:" + datTim +"datetime:"+ request.query.datetime +"<br/>" + +"<br/>fixUnixDate:" + fixUnixDate
-    // response.send("datetime:"+ request.query.datetime  +  "<br/>dateTimeObj:"+ dateTimeObj + "<br/>" + newsFlexHtml);
-    // console.log(newsFlexHtml);
-   // response.sendFile(__dirname + newsFlexHtml);
-   response.send(newsFlexHtml);
+  // console.log(newsFlexHtml);
+// response.sendFile(__dirname + newsFlexHtml);
+ //response.send(show+"_"+fileDateOne + "_" + fileHourOne + "00.html");
+// response.sendFile(__dirname + "/" + show+"_"+fileDateOne + "_" + fileHourOne + "00.html");
 
+var htmOne = "me_02-13-2017_0500.html";
+var readHtmlOne = fs.readFileSync(htmOne).toString();
+
+var htmTwo= "atc_02-10-2017_1600.html";
+var readHtmlTwo = fs.readFileSync(htmTwo).toString();
+
+
+var htmlResponse;
+
+// htmlResponse = "<table border='1'><tr><td valign='top'>"+readHtmlOne+"</td><td valign='top'>"+readHtmlTwo+"</tr></table>";
+
+htmlResponse = newsFlexHtmlOne;
+    if(newsFlexHtmlTwo){
+        htmlResponse = "<table border='1'><tr><td valign='top'>"+newsFlexHtmlOne+"</td><td valign='top'>"+newsFlexHtmlTwo+"</tr></table>";
+    }
+response.send(htmlResponse);
+    
 });
 
 app.listen(3005, function(){
